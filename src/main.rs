@@ -5,7 +5,7 @@ fn main() {
 
     loop {
         // 1. Prompt the user for input
-        print!("\nEnter temperature in Celsius (or type 'exit' to quit): ");
+        print!("\nEnter temperature in Celsius (or type 'q' to quit): ");
         // Ensure the prompt prints immediately since print! doesn't auto-flush the buffer
         io::stdout().flush().unwrap();
 
@@ -19,7 +19,7 @@ fn main() {
         let input = input.trim();
 
         // Check if the user wants to exit
-        if input.eq_ignore_ascii_case("exit") {
+        if input.eq_ignore_ascii_case("exit") || input.eq_ignore_ascii_case("q") {
             println!("Goodbye!");
             break;
         }
