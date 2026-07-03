@@ -4,8 +4,7 @@ use std::io::{self, Write};
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 struct Args {
-    /// metric is the default (as it should be)
-    /// use --imperial to override default to imperial measuring
+    /// overrides default to imperial measuring
     #[arg(short, long)]
     imperial: bool,
 }
