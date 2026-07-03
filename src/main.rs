@@ -22,19 +22,19 @@ fn main() {
 
         let message = format!("\nEnter temperature in {standard} (or type 'q' to quit): ");
 
-        // 1. Prompt the user for input
+        // Prompt the user for input
         println!("{}", message);
 
         // Ensure the prompt prints immediately since print! doesn't auto-flush the buffer
         io::stdout().flush().unwrap();
 
-        // 2. Read the user's input
+        // Read the user's input
         let mut input = String::new();
         io::stdin()
             .read_line(&mut input)
             .expect("Failed to read line");
 
-        // 3. Clean up the input string
+        // Clean up the input string
         let input = input.trim();
 
         // Check if the user wants to exit
@@ -43,12 +43,12 @@ fn main() {
             break;
         }
 
-        // 4. Parse the input into a floating-point number
+        // Parse the input into a floating-point number
         let char1 = if args.imperial { "F" } else { "C" };
         let char2 = if args.imperial { "C" } else { "F" };
         match input.parse::<f64>() {
             Ok(input_value) => {
-                // 5. Calculate and display the result
+                // Calculate and display the result
                 let out_value = if args.imperial {
                     fahrenheit_to_celcius(input_value)
                 } else {
