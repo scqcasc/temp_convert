@@ -12,7 +12,7 @@ struct Args {
 
 fn main() {
     let args = Args::parse();
-    println!("=== Celsius to Fahrenheit Converter ===");
+    println!("=== Temperature Converter ===");
 
     loop {
         let standard = if args.imperial {
@@ -45,11 +45,20 @@ fn main() {
         }
 
         // 4. Parse the input into a floating-point number
+        let char1 = if args.imperial { "F" } else { "C" };
+        let char2 = if args.imperial { "C" } else { "F" };
         match input.parse::<f64>() {
-            Ok(celsius) => {
+            Ok(input_value) => {
                 // 5. Calculate and display the result
-                let fahrenheit = celsius_to_fahrenheit(celsius);
-                println!("{:.2}°C is equal to {:.2}°F", celsius, fahrenheit);
+                let out_value = if args.imperial {
+                    fahrenheit_to_celcius(input_value)
+                } else {
+                    celsius_to_fahrenheit(input_value)
+                };
+                println!(
+                    "{:.2}°{char1} is equal to {:.2}°{char2}",
+                    input_value, out_value
+                );
             }
             Err(_) => {
                 println!("❌ Error: Please enter a valid number or 'exit'.");
