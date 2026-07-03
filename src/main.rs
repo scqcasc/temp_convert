@@ -17,8 +17,8 @@ fn main() {
     let args = Args::parse();
     println!("=== Temperature Converter ===");
 
+    // if a value was provided then calculate it without the loop
     if let Some(val) = args.value {
-        println!("Checking for {}", val);
         let char1 = if args.imperial { "F" } else { "C" };
         let char2 = if args.imperial { "C" } else { "F" };
         let out_value = if args.imperial {
