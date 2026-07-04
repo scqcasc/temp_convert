@@ -15,7 +15,6 @@ struct Args {
 
 fn main() {
     let args = Args::parse();
-    println!("=== Temperature Converter ===");
 
     // if a value was provided then calculate it without the loop
     if let Some(val) = args.value {
